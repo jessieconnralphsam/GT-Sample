@@ -42,13 +42,62 @@
 
         console.log('Predicted Label:', predictedLabel);
 
-        
-        const labelMap = { 0: 'Healthy', 1: 'Blight'}; // Modify this mapping as per your label classes
-        const predictedWord = labelMap[predictedLabel];
+        // mapping as per your label classes
+        const labelMap = { 0:{name: 'Apple', //name of plant
+                              species:'', //species og plant
+                              variety:'', //variety of plant
+                              disease: 'Scab', //name of disease
+                              description: '', //des of disease
+                              effects:'', //disease effects on plant like growth, yield etc.
+                              cause:'', // organism or factors causes
+                              medicine: '', //possible med in market
+                              prevention:'', //prenvention
+                             },
+                          1: 'Apple Black Rot', 
+                          2: 'Apple Healthy',
+                          3:'Blueberry Healthy',
+                          4:'Cherry Healthy', 
+                          5:'Cherry Powdery Mildew',
+                          6:'Corn Cercos Pora',
+                          7:'Corn Common Rust',
+                          8:'Corn Healthy',
+                          9:'Corn Northern Leaf Blight',
+                          10:'Grape Black Rot',
+                          11:'Grape Black Measles',
+                          12:'Grape Healthy',
+                          13:'Grape Isariopsis Leaf Spot', 
+                          14:'Orange Haunglongbing',
+                          15:'Peach Bacterial Spot',
+                          16:'Peach Healthy',
+                          17:'Pepper Bacterial Spot',
+                          18:'Pepper Healthy',
+                          19:'Potato Early Blight',
+                          20:'Raspberry Healthy',
+                          21:'Soybean Healthy',
+                          22:'Squash Powdery Mildew',
+                          23:'Strawberry Healthy',
+                          24:'Strawberry Leaf Scorch',
+                          25:'Tomato Bacterial Spot',
+                          26:'Tomato Early Blight',
+                          27:'Tomato Healthy',
+                          28:'Tomato Late Blight',
+                          29:'Tomato Leaf Mold',
+                          30:'Tomato Septoria Leaf Spot',
+                          31:'Tomato Spider Mites',
+                          32:'Tomato Target Spot',
+                          33:'Tomato Mosaic Virus',
+                          34:'Tomato Yellow Leaf Curl Virus',
+                          35:'Apple Cedar Rust',
+                          36:'Potato Healthy',
+                          37:'Potato Late Blight',
+                          }; 
+        //variable for prediction
+        const predictedWord = labelMap[predictedLabel].name;
+        const predictedDescription = labelMap[predictedLabel].description;
 
         // Print the predicted label as a word to the output div
         const outputDiv = document.getElementById('output');
-        outputDiv.innerHTML = 'Output: ' + predictedWord;
+        outputDiv.innerHTML = 'Output: ' + predictedWord + '<br>' + predictedDescription; // output
 
         predictions.dispose();
         tf.dispose([image, preprocessedImage]);
